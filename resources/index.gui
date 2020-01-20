@@ -1,0 +1,137 @@
+<svg>
+  <svg id="main">
+    <use id="stop-button" href="#push-button" y="50" height="60"
+      fill="fb-red" font-family="System-Regular" font-size="40">
+      <set href="#text" attributeName="text-buffer" to="Stop" />
+      <set href="#text" attributeName="fill" to="fb-white" />
+      <set href="#text" attributeName="y" to="12" />
+    </use>
+    <text id="allow-sleep-text" fill="white">未設定</text>
+    <use id="reset-button" href="#push-button" y="200" height="60"
+      fill="fb-blue" font-family="System-Regular" font-size="40">
+      <set href="#text" attributeName="text-buffer" to="Reset" />
+      <set href="#text" attributeName="fill" to="fb-white" />
+      <set href="#text" attributeName="y" to="12" />
+    </use>
+  </svg>
+
+  <svg id="clock-setting" viewport-fill="fb-cyan" display="none">
+    <use class="tumbler" id="hour-tumbler" href="#tumblerview">
+      <use id="item0" href="#tumbler-item" class="item">
+        <text id="content">00</text>
+      </use>
+      <use id="item0" href="#tumbler-item" class="item">
+        <text id="content">01</text>
+      </use>
+      <use id="item1" href="#tumbler-item" class="item">
+        <text id="content">02</text>
+      </use>
+      <use id="item2" href="#tumbler-item" class="item">
+        <text id="content">03</text>
+      </use>
+      <use id="item3" href="#tumbler-item" class="item">
+        <text id="content">04</text>
+      </use>
+      <use id="item4" href="#tumbler-item" class="item">
+        <text id="content">05</text>
+      </use>
+      <use id="item5" href="#tumbler-item" class="item">
+        <text id="content">06</text>
+      </use>
+      <use id="item6" href="#tumbler-item" class="item">
+        <text id="content">07</text>
+      </use>
+      <use id="item7" href="#tumbler-item" class="item">
+        <text id="content">08</text>
+      </use>
+      <use id="item8" href="#tumbler-item" class="item">
+        <text id="content">09</text>
+      </use>
+      <use id="item9" href="#tumbler-item" class="item">
+        <text id="content">10</text>
+      </use>
+      <use id="item9" href="#tumbler-item" class="item">
+        <text id="content">11</text>
+      </use>
+      <use id="item9" href="#tumbler-item" class="item">
+        <text id="content">12</text>
+      </use>
+      <use id="item9" href="#tumbler-item" class="item">
+        <text id="content">13</text>
+      </use>
+      <use id="item9" href="#tumbler-item" class="item">
+        <text id="content">14</text>
+      </use>
+      <use id="item9" href="#tumbler-item" class="item">
+        <text id="content">15</text>
+      </use>
+      <use id="item9" href="#tumbler-item" class="item">
+        <text id="content">16</text>
+      </use>
+      <use id="item9" href="#tumbler-item" class="item">
+        <text id="content">17</text>
+      </use>
+      <use id="item9" href="#tumbler-item" class="item">
+        <text id="content">18</text>
+      </use>
+      <use id="item9" href="#tumbler-item" class="item">
+        <text id="content">19</text>
+      </use>
+      <use id="item9" href="#tumbler-item" class="item">
+        <text id="content">20</text>
+      </use>
+      <use id="item9" href="#tumbler-item" class="item">
+        <text id="content">21</text>
+      </use>
+      <use id="item9" href="#tumbler-item" class="item">
+        <text id="content">22</text>
+      </use>
+      <use id="item9" href="#tumbler-item" class="item">
+        <text id="content">23</text>
+      </use>
+    </use>
+    <use class="tumbler" id="minute-tumbler" href="#tumblerview" x="100">
+      <use id="item0" href="#tumbler-item" class="item">
+        <text id="content">00</text>
+      </use>
+      <use id="item0" href="#tumbler-item" class="item">
+        <text id="content">05</text>
+      </use>
+      <use id="item1" href="#tumbler-item" class="item">
+        <text id="content">10</text>
+      </use>
+      <use id="item2" href="#tumbler-item" class="item">
+        <text id="content">15</text>
+      </use>
+      <use id="item3" href="#tumbler-item" class="item">
+        <text id="content">20</text>
+      </use>
+      <use id="item4" href="#tumbler-item" class="item">
+        <text id="content">25</text>
+      </use>
+      <use id="item5" href="#tumbler-item" class="item">
+        <text id="content">30</text>
+      </use>
+      <use id="item6" href="#tumbler-item" class="item">
+        <text id="content">35</text>
+      </use>
+      <use id="item7" href="#tumbler-item" class="item">
+        <text id="content">40</text>
+      </use>
+      <use id="item8" href="#tumbler-item" class="item">
+        <text id="content">45</text>
+      </use>
+      <use id="item9" href="#tumbler-item" class="item">
+        <text id="content">50</text>
+      </use>
+      <use id="item9" href="#tumbler-item" class="item">
+        <text id="content">55</text>
+      </use>
+    </use>
+    <use id="tumbler-ok-button" href="#combo-button-lower-right" fill="fb-peach">
+      <set href="combo-button-icon" attributeName="href" to="btn_combo_play_p.png"/>
+      <set href="combo-button-icon-press" attributeName="href" to="btn_combo_play_press_p.png"/>
+      <set href="combo-button-stroke" attributeName="display" to="inline"/>
+    </use>
+  </svg>
+</svg>
