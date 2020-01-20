@@ -6,8 +6,10 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
     "lib": [
       "ES5",
+      "ESNext",
       "DOM"
     ]
   }

@@ -8,31 +8,24 @@ import startOfMinute from "date-fns/startOfMinute";
 import addDays from "date-fns/addDays";
 import getHours from "date-fns/getHours";
 import getMinutes from "date-fns/getMinutes";
+import "./polyfill";
 
 me.appTimeoutEnabled = false;
 
-function padStart(s, targetLength, padString) {
-  while (s.length < targetLength) {
-    s = padString + s;
-  }
-  return s;
-}
-
 class App {
-  constructor() {
-    this.page = "main";
-    this.allowSleep = null;
-    this.isVibration = false;
-    this.stopButtonEl = document.getElementById("stop-button");
-    this.resetButtonEl = document.getElementById("reset-button");
-    this.allowSleepTextEl = document.getElementById("allow-sleep-text");
-    this.mainEl = document.getElementById("main");
-    this.hourSettingEl = document.getElementById("hour-tumbler");
-    this.minuteSettingEl = document.getElementById("minute-tumbler");
-    this.tumblerOkButtonEl = document.getElementById("tumbler-ok-button");
-    this.clockSettingEl = document.getElementById("clock-setting");
-    this.sleep = null;
-  }
+  page: "main" | "clock-setting" = "main";
+  allowSleep: Date | null = null;
+  isVibration = false;
+  stopButtonEl = document.getElementById("stop-button");
+  resetButtonEl = document.getElementById("reset-button");
+  allowSleepTextEl = document.getElementById("allow-sleep-text");
+  mainEl = document.getElementById("main");
+  hourSettingEl = document.getElementById("hour-tumbler");
+  minuteSettingEl = document.getElementById("minute-tumbler");
+  tumblerOkButtonEl = document.getElementById("tumbler-ok-button");
+  clockSettingEl = document.getElementById("clock-setting");
+  sleep: Sleep | null = null;
+  constructor() {}
 
   updatePage() {
     if (this.page === "main") {
@@ -51,9 +44,9 @@ class App {
       this.allowSleepTextEl.text = "未設定";
     } else {
       this.allowSleepTextEl.text =
-        padStart(String(getHours(this.allowSleep)), 2, "0") +
+        String(getHours(this.allowSleep)).padStart(2, "0") +
         ":" +
-        padStart(String(getMinutes(this.allowSleep)), 2, "0");
+        String(getMinutes(this.allowSleep)).padStart(2, "0");
     }
   }
 

@@ -1,10 +1,8 @@
 import { Accelerometer } from "accelerometer";
 
 export class Sleep {
-  constructor(onSleep) {
-    this.onSleep = onSleep;
-    this.accel = null;
-  }
+  accel: any = null;
+  constructor(public onSleep: () => void) {}
 
   start() {
     const frequency = 10;
@@ -55,10 +53,8 @@ export class Sleep {
   }
 }
 
-function accel_size(x, y, z) {
+function accel_size(x: number, y: number, z: number) {
   const GRAVITY = 9.8;
 
-  return Math.abs(
-    Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2) + Math.pow(z, 2)) - GRAVITY
-  );
+  return Math.abs(Math.sqrt(x ** 2 + y ** 2 + z ** 2) - GRAVITY);
 }
