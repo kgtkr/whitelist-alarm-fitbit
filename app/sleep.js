@@ -23,31 +23,35 @@ export class Sleep {
     // これが0ならば判定する
     let skipCount = 0;
 
-    this.accel = new Accelerometer({ frequency, batch });
-    this.accel.addEventListener("reading", () => {
-      skipCount = Math.max(0, skipCount - 1);
-      let sum = 0;
-      for (
-        let index = 0;
-        index < this.accel.readings.timestamp.length;
-        index++
-      ) {
-        sum += accel_size(
-          this.accel.readings.x[index],
-          this.accel.readings.y[index],
-          this.accel.readings.z[index]
-        );
-      }
-      const ave = sum / this.accel.readings.timestamp.length;
-      console.log(ave);
-      if (ave > activeThreshold) {
-        skipCount = activeSkipFrame;
-      }
-      if (skipCount === 0 && ave < sleepThreshold) {
-        this.onSleep();
-      }
-    });
-    this.accel.start();
+    if (Accelerometer) {
+      this.accel = new Accelerometer({ frequency, batch });
+      this.accel.addEventListener("reading", () => {
+        skipCount = Math.max(0, skipCount - 1);
+        let sum = 0;
+        for (
+          let index = 0;
+          index < this.accel.readings.timestamp.length;
+          index++
+        ) {
+          sum += accel_size(
+            this.accel.readings.x[index],
+            this.accel.readings.y[index],
+            this.accel.readings.z[index]
+          );
+        }
+        const ave = sum / this.accel.readings.timestamp.length;
+        console.log(ave);
+        if (ave > activeThreshold) {
+          skipCount = activeSkipFrame;
+        }
+        if (skipCount === 0 && ave < sleepThreshold) {
+          this.onSleep();
+        }
+      });
+      this.accel.start();
+    } else {
+      console.error("Device not compatible with accelerometer");
+    }
   }
 }
 
