@@ -26,6 +26,7 @@ class App {
   tumblerOkButtonEl = document.getElementById("tumbler-ok-button");
   clockSettingEl = document.getElementById("clock-setting");
   sleep: Sleep | null = null;
+  clickCount = 0;
   constructor() {}
 
   updatePage() {
@@ -60,6 +61,22 @@ class App {
     this.updateStopButtonEl();
     this.updateAllowSleepTextEl();
     this.updatePage();
+
+    document.onkeypress = (evt: any) => {
+      if (evt.key === "back") {
+        this.clickCount += 1;
+        const tmp = this.clickCount;
+        // 500msクリックされなければリセット
+        setTimeout(() => {
+          if (this.clickCount === tmp) {
+            this.clickCount = 0;
+          }
+        }, 500);
+        if (this.clickCount < 3) {
+          evt.preventDefault();
+        }
+      }
+    };
 
     this.tumblerOkButtonEl.onactivate = () => {
       const now = new Date();
