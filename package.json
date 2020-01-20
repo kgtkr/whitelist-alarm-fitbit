@@ -22,7 +22,7 @@
       "mira"
     ],
     "i18n": {},
-    "defaultLanguage": "en-US"
+    "defaultLanguage": "ja-JP"
   },
   "scripts": {
     "build": "fitbit-build",
