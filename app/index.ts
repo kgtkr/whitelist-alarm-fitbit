@@ -8,7 +8,8 @@ import startOfMinute from "date-fns/startOfMinute";
 import addDays from "date-fns/addDays";
 import getHours from "date-fns/getHours";
 import getMinutes from "date-fns/getMinutes";
-import "./polyfill";
+import "../common/polyfill";
+import { formatHHMM } from "../common/date-format";
 
 me.appTimeoutEnabled = false;
 
@@ -43,10 +44,7 @@ class App {
     if (this.allowSleep === null) {
       this.allowSleepTextEl.text = "未設定";
     } else {
-      this.allowSleepTextEl.text =
-        String(getHours(this.allowSleep)).padStart(2, "0") +
-        ":" +
-        String(getMinutes(this.allowSleep)).padStart(2, "0");
+      this.allowSleepTextEl.text = formatHHMM(this.allowSleep);
     }
   }
 
