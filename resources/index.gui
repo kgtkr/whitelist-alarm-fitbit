@@ -19,7 +19,7 @@
     <text id="allow-sleep-text" fill="white">未設定</text>
     <use id="reset-button" href="#push-button" y="200" height="60"
       fill="fb-blue" font-family="System-Regular" font-size="40">
-      <set href="#text" attributeName="text-buffer" to="Reset" />
+      <set href="#text" attributeName="text-buffer" to="Set/Reset" />
       <set href="#text" attributeName="fill" to="fb-white" />
       <set href="#text" attributeName="y" to="12" />
     </use>
