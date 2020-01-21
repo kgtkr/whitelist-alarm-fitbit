@@ -135,6 +135,13 @@ class App {
       }
     };
 
+    setInterval(() => {
+      if (this.allowSleep !== null && this.allowSleep <= new Date()) {
+        this.allowSleep = null;
+        this.updateAllowSleepTextEl();
+      }
+    }, 1000 * 60);
+
     this.sleep = new Sleep(() => {
       if (this.allowSleep !== null && this.allowSleep > new Date()) {
         return;
