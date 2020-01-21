@@ -5,6 +5,11 @@ export class Sleep {
   constructor(public onSleep: () => void) {}
 
   start() {
+    /*
+    intervalSecond秒に一回batch個の値を取り加速度の大きさの平均aveを取る
+    aveがsleepThresholdより小さければ睡眠判定をしコールバックを呼び出す
+    ただしaveがactiveThresholdより大きければそこからactiveSkipSecond秒間はコールバックを呼び出さない
+    */
     const frequency = 10;
     const batch = 100;
     // 判定する間隔[秒]
