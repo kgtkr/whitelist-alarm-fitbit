@@ -10,6 +10,7 @@ import getHours from "date-fns/getHours";
 import getMinutes from "date-fns/getMinutes";
 import "../common/polyfill";
 import { formatHHMM } from "../common/date-format";
+import addMinutes from "date-fns/addMinutes";
 
 me.appTimeoutEnabled = false;
 
@@ -123,9 +124,9 @@ class App {
 
     this.resetButtonEl.onactivate = () => {
       if (this.allowSleep === null) {
-        const now = new Date();
-        this.hourSettingEl.value = getHours(now);
-        this.minuteSettingEl.value = Math.floor(getMinutes(now) / 5);
+        const date = addMinutes(new Date(), 30);
+        this.hourSettingEl.value = getHours(date);
+        this.minuteSettingEl.value = Math.floor(getMinutes(date) / 5);
         this.page = "clock-setting";
         this.updatePage();
       } else {
