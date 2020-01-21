@@ -1,4 +1,14 @@
 <svg>
+  <svg id="exit" display="none">
+    <text fill="white" y="70">終了確認</text>
+    <text fill="white" y="130" style="font-size: 8">3回クリックで終了</text>
+    <use id="exit-cancel" href="#push-button" y="200" height="60"
+      fill="fb-red" font-family="System-Regular" font-size="40">
+      <set href="#text" attributeName="text-buffer" to="戻る" />
+      <set href="#text" attributeName="fill" to="fb-white" />
+      <set href="#text" attributeName="y" to="12" />
+    </use>
+  </svg>
   <svg id="main">
     <use id="stop-button" href="#push-button" y="50" height="60"
       fill="fb-red" font-family="System-Regular" font-size="40">

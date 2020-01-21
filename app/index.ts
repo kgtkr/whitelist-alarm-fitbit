@@ -14,7 +14,7 @@ import { formatHHMM } from "../common/date-format";
 me.appTimeoutEnabled = false;
 
 class App {
-  page: "main" | "clock-setting" = "main";
+  page: "main" | "clock-setting" | "exit" = "main";
   allowSleep: Date | null = null;
   isVibration = false;
   stopButtonEl = document.getElementById("stop-button");
@@ -25,6 +25,8 @@ class App {
   minuteSettingEl = document.getElementById("minute-tumbler");
   tumblerOkButtonEl = document.getElementById("tumbler-ok-button");
   clockSettingEl = document.getElementById("clock-setting");
+  exitEl = document.getElementById("exit");
+  exitCancel = document.getElementById("exit-cancel");
   sleep: Sleep | null = null;
   clickCount = 0;
   constructor() {}
@@ -33,11 +35,19 @@ class App {
     if (this.page === "main") {
       this.clockSettingEl.style.display = "none";
       this.mainEl.style.display = "inline";
+      this.exitEl.style.display = "none";
     }
 
     if (this.page === "clock-setting") {
       this.clockSettingEl.style.display = "inline";
       this.mainEl.style.display = "none";
+      this.exitEl.style.display = "none";
+    }
+
+    if (this.page === "exit") {
+      this.clockSettingEl.style.display = "none";
+      this.mainEl.style.display = "none";
+      this.exitEl.style.display = "inline";
     }
   }
 
@@ -64,18 +74,33 @@ class App {
 
     document.onkeypress = (evt: any) => {
       if (evt.key === "back") {
-        this.clickCount += 1;
-        const tmp = this.clickCount;
-        // 500msクリックされなければリセット
-        setTimeout(() => {
-          if (this.clickCount === tmp) {
-            this.clickCount = 0;
-          }
-        }, 500);
-        if (this.clickCount < 3) {
+        if (this.page === "main") {
+          this.page = "exit";
+          this.updatePage();
           evt.preventDefault();
+        } else if (this.page === "clock-setting") {
+          this.page = "main";
+          this.updatePage();
+          evt.preventDefault();
+        } else if (this.page === "exit") {
+          this.clickCount += 1;
+          const tmp = this.clickCount;
+          // 500msクリックされなければリセット
+          setTimeout(() => {
+            if (this.clickCount === tmp) {
+              this.clickCount = 0;
+            }
+          }, 500);
+          if (this.clickCount < 3) {
+            evt.preventDefault();
+          }
         }
       }
+    };
+
+    this.exitCancel.onactivate = () => {
+      this.page = "main";
+      this.updatePage();
     };
 
     this.tumblerOkButtonEl.onactivate = () => {
